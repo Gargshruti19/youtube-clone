@@ -5,7 +5,15 @@ import { Container } from "react-bootstrap";
 import HomeScreen from "./screens/homescreen/HomeScreen";
 import "./_app.scss";
 import LoginScreen from "./screens/loginscreen/LoginScreen";
-const App = () => {
+
+import {
+	BrowserRouter as Router,
+	Route,
+	Routes,
+	Navigate,
+} from "react-router-dom";
+
+const Layout = ({ children }) => {
 	const [sidebar, setSidebar] = useState(false);
 
 	const handleToggleSidebar = () => {
@@ -13,16 +21,42 @@ const App = () => {
 	};
 
 	return (
-		// <>
-		// 	<Header handleToggleSidebar={handleToggleSidebar} />
-		// 	<div className="app__container border border-info">
-		// 		<Sidebar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
-		// 		<Container fluid className="app__main border border-warning">
-		// 			<HomeScreen />
-		// 		</Container>
-		// 	</div>
-		// </>
-		<LoginScreen />
+		<>
+			<Header handleToggleSidebar={handleToggleSidebar} />
+			<div className="app__container">
+				<Sidebar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
+				<Container fluid className="app__main ">
+					{children}
+				</Container>
+			</div>
+		</>
+	);
+};
+
+const App = () => {
+	return (
+		<Router>
+			<Routes>
+				<Route
+					path="/"
+					element={
+						<Layout>
+							<HomeScreen />
+						</Layout>
+					}
+				/>
+				<Route path="/auth" element={<LoginScreen />} />
+				<Route
+					path="/search"
+					element={
+						<Layout>
+							<h1>Search</h1>
+						</Layout>
+					}
+				/>
+				<Route path="*" element={<Navigate to="/" />} />
+			</Routes>
+		</Router>
 	);
 };
 
