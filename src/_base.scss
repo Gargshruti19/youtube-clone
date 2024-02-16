@@ -1,5 +1,4 @@
- @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 $text-color: #b1bdb4;
 $black-primary: #16181b;
@@ -18,4 +17,15 @@ body {
 	color: $text-color;
 	letter-spacing: 0.1px;
 	font-family: "Roboto", sans-serif;
+}
+
+@mixin line-clamp($number) {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: $number;
+	-webkit-box-orient: vertical;
+}
+
+::-webkit-scrollbar {
+	width: 0px;
 }
