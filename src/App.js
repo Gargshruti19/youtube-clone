@@ -4,7 +4,6 @@ import Sidebar from "./components/sidebar/Sidebar";
 import { Container } from "react-bootstrap";
 import HomeScreen from "./screens/homescreen/HomeScreen";
 import "./_app.scss";
-import LoginScreen from "./screens/loginscreen/LoginScreen";
 
 import {
 	BrowserRouter as Router,
@@ -45,7 +44,6 @@ const App = () => {
 						</Layout>
 					}
 				/>
-				<Route path="/auth" element={<LoginScreen />} />
 				<Route
 					path="/search"
 					element={
